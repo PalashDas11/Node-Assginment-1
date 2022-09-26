@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 
-app.use("/api/v1/users", usersRoutes)
+app.use("/api/users/all", usersRoutes)
 
 
 app.get('/', (req, res) => {

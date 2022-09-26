@@ -41,3 +41,14 @@ let users = [
 module.exports.getAllUsers = (req, res, next) => {
     res.send(users)
 }
+module.exports.saveAUser = (req, res, next) => {
+  
+  if(users.id, users.name, users.contact, users.address, users.gender, users.photoUrl ===req.body.id, req.body.name, req.body.address, req.body.gender, req.body.photoUrl){
+    users.push(req.body)
+    res.send('saved')
+  }
+  else{
+    res.send('put all property')
+  }
+       
+}
