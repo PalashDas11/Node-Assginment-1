@@ -2,9 +2,15 @@ const express = require("express");
 const usersController = ({
   getAllUsers,
   saveAUser,
+  updateUser,
+  detailsUser,
+  randomUser
 } = require("../../controllers/users.controller"));
 const router = express.Router();
 
 router.route("/").get(usersController.getAllUsers).post(usersController.saveAUser);
+router.route("/random").get(usersController.randomUser)
+
+router.route("/:id").patch(usersController.updateUser).get(usersController.detailsUser)
 
 module.exports = router;
