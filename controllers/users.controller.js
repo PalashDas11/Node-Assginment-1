@@ -55,29 +55,26 @@ module.exports.saveAUser = (req, res, next) => {
 
 module.exports.detailsUser = (req, res) =>{
   const { id } = req.params;
-  // console.log(id);
   const filter = { _id: id };
   const foundUser = users.find((user) => user.id === Number(id));
   res.send(foundUser);
  }
 module.exports.randomUser = (req, res) =>{
   const randomUsers = users.sort(() => Math.random() - 0.5);
-  res.send(randomUsers)
-  // const { id } = req.params;
-  // console.log(id);
-  // const filter = { _id: id };
-  // const foundUser = users.find((user) => user.id === Number(id));
-  // res.send(foundUser);
+  res.send(randomUsers);
  }
+
 module.exports.updateUser = (req, res) =>{
   const {id} = req.params;
   const filter = {_id : id};
-  console.log(filter);
   const newUser = users.find(user => user.id===Number(id))
-  console.log(newUser.id);
-
   newUser.id = id
-  newUser.name = req.body.name
-  
+  newUser.name = req.body.name;
   res.send(newUser)
  }
+ module.exports.deleteUser = (req, res) => {
+  const {id}= req.params
+  const filter = {_id : id}
+  users = users.filter(user => user.id !== Number(id))
+  res.send(users)
+}
