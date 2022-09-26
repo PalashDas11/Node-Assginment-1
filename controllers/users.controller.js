@@ -37,10 +37,13 @@ let users = [
 
 
 
-
+//  get All user 
 module.exports.getAllUsers = (req, res, next) => {
+  const { limit, page } = req.query;
     res.send(users)
 }
+
+// save a user 
 module.exports.saveAUser = (req, res, next) => {
   
   if(users.id, users.name, users.contact, users.address, users.gender, users.photoUrl ===req.body.id, req.body.name, req.body.address, req.body.gender, req.body.photoUrl){
@@ -52,18 +55,23 @@ module.exports.saveAUser = (req, res, next) => {
   }
        
 }
-
+// details a user 
 module.exports.detailsUser = (req, res) =>{
   const { id } = req.params;
   const filter = { _id: id };
   const foundUser = users.find((user) => user.id === Number(id));
   res.send(foundUser);
  }
+//  random user genarate 
 module.exports.randomUser = (req, res) =>{
-  const randomUsers = users.sort(() => Math.random() - 0.5);
-  res.send(randomUsers);
+  const keys = Object.keys(users)
+  const randIndex = Math.floor(Math.random() * keys.length)
+  const randKey = keys[randIndex]
+  const name = users[randKey]
+   res.send(name);
  }
 
+//  update a user 
 module.exports.updateUser = (req, res) =>{
   const {id} = req.params;
   const filter = {_id : id};
@@ -72,6 +80,7 @@ module.exports.updateUser = (req, res) =>{
   newUser.name = req.body.name;
   res.send(newUser)
  }
+//  delete a User 
  module.exports.deleteUser = (req, res) => {
   const {id}= req.params
   const filter = {_id : id}
