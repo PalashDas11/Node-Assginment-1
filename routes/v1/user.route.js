@@ -13,7 +13,7 @@ router
   .route("/")
   .get(usersController.getAllUsers)
   .post(usersController.saveAUser);
-router.route("user/random").get(usersController.randomUser);
+router.route("/random").get(usersController.randomUser);
 
 router
   .route("/:id")
