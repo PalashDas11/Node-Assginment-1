@@ -5,13 +5,19 @@ const usersController = ({
   updateUser,
   detailsUser,
   randomUser,
-  deleteUser
+  deleteUser,
 } = require("../../controllers/users.controller"));
 const router = express.Router();
 
-router.route("/").get(usersController.getAllUsers).post(usersController.saveAUser);
-router.route("/random").get(usersController.randomUser)
+router.route("/all").get(usersController.getAllUsers);
 
-router.route("/:id").patch(usersController.updateUser).get(usersController.detailsUser).delete(usersController.deleteUser)
+router.route("/save").post(usersController.saveAUser);
+router.route("/random").get(usersController.randomUser);
+
+router
+  .route("/:id")
+  .patch(usersController.updateUser)
+  .get(usersController.detailsUser)
+  .delete(usersController.deleteUser);
 
 module.exports = router;

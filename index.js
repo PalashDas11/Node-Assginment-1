@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 
-app.use("/api/users/all", usersRoutes)
+app.use("/user", usersRoutes)
 
 
 app.get('/', (req, res) => {
@@ -25,3 +25,5 @@ app.all("*", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+// https://express-js-app-ass.herokuapp.com/user/ ====server name;
